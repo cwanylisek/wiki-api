@@ -26,10 +26,31 @@ const ApiContextProvider = props => {
         }
     }
 
+    const replaceWiki = async (search) => {
+        try {
+            const url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&format=json&srsearch=%22${search}%22&srlimit=1`
+            console.log(url)
+            const result = await axios.get(url)
+            .then(res => {
+                return res.data.query.search
+            })
+            console.log(result[0])
+            let newArr = [...results]
+            newArr[0] = result[0]
+            console.log(newArr, 'newarr')
+            setResults(newArr)
+        }
+        catch (e) {
+            if (e){
+                console.log(e)
+            }
+        }
+    }
+
   
 
     return (
-        <ApiContext.Provider value={{ results, fetchWiki }}>
+        <ApiContext.Provider value={{ results, fetchWiki, replaceWiki }}>
             {props.children}
         </ApiContext.Provider>
     )

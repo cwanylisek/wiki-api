@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { ApiContext } from '../../contexts/ApiContext'
 
 const Navbar = () => {
-    const { results, fetchWiki } = useContext(ApiContext)
+
+    const { fetchWiki, replaceWiki } = useContext(ApiContext)
 
     const searchResults = e => {
         e.preventDefault()
@@ -11,14 +12,24 @@ const Navbar = () => {
         fetchWiki(searchButton)
     }
 
+    const replaceAll = () => {
+        const replaceInput = document.querySelector('#replace').value
+        fetchWiki(replaceInput)
+    }
+
+    const replaceOne = () => {
+        const replaceInput = document.querySelector('#replace').value
+        replaceWiki(replaceInput)
+    }
+
     return (
         <nav className="navbar">
             <form className="navbar__form" onSubmit={searchResults}>
                 <input className="navbar__input" name="search" id="search" placeholder="search" />
                 <input className="navbar__input" name="replace" id="replace" placeholder="replace with" />
                 <button className="navbar__button" type="submit">search</button>
-                <button className="navbar__button" type="button">replace</button>
-                <button className="navbar__button" type="button">replace all</button>
+                <button className="navbar__button" type="button" onClick={replaceOne}>replace</button>
+                <button className="navbar__button" type="button" onClick={replaceAll}>replace all</button>
             </form>
         </nav>
     )
