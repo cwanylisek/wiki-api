@@ -8,9 +8,9 @@ const List = () => {
     let displayList
 
     if (results) {
-        displayList = results.map((item, i) =><li key={i}><strong>{item.title}</strong> - {item.snippet}</li>)
+        displayList = results.map((item, i) => <li key={i}><strong>{item.title}</strong> - {item.snippet}</li>)
     }
- 
+
     return (
         <ul>
             {displayList}

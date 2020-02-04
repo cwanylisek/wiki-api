@@ -7,7 +7,6 @@ const Navbar = () => {
 
     const searchResults = e => {
         e.preventDefault()
-        console.log(e.target.search.value, 'value')
         const searchButton = e.target.search.value
         fetchWiki(searchButton)
     }
