@@ -23,6 +23,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+            <h1>Wiki API - results request</h1>
             <form className="navbar__form" onSubmit={searchResults}>
                 <input className="navbar__input" name="search" id="search" placeholder="search" />
                 <input className="navbar__input" name="replace" id="replace" placeholder="replace with" />

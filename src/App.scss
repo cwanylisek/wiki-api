@@ -9,6 +9,10 @@
 
 .navbar {
     margin-top: 30px;
+    h1 {
+        justify-content: center;
+        display: flex;
+    }
     &__input {
         margin: 0 10px;
     }
